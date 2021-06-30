@@ -100,7 +100,7 @@ float LinuxParser::MemoryUtilization() {
   return Memory_utilize;
 }
 
-    // TODO: Read and return the system uptime
+// TODO: Read and return the system uptime
 long LinuxParser::UpTime() {
       long Uptime;
 
@@ -129,7 +129,6 @@ long LinuxParser::UpTime() {
     }
 
     // TODO: Read and return the number of active jiffies for a PID
-    // REMOVE: [[maybe_unused]] once you define the function
     long LinuxParser::ActiveJiffies(int pid) {
       long total = 0;
       string value, line; // initialize variables 
@@ -302,7 +301,7 @@ long LinuxParser::UpTime(int pid) {
  long number;
  string line, word;
  vector<long> data;
-
+ 
   ifstream stream(kProcDirectory + to_string(pid) + kStatFilename);
   if (stream.is_open()) {
     getline(stream, line);

@@ -95,7 +95,7 @@ float LinuxParser::MemoryUtilization() {
         if (os == "MemFree:") {
           MemFree = stof(kernel);
      
-          Memory_utilize = MemTotal + MemFree;
+          Memory_utilize = (MemTotal - MemFree)/MemTotal;
         }
       }
     }
@@ -131,6 +131,7 @@ long LinuxParser::UpTime() {
 
       return total; // return                                                                        
     }
+
 
     // TODO: Read and return the number of active jiffies for a PID
     long LinuxParser::ActiveJiffies(int pid) {
@@ -243,7 +244,7 @@ long LinuxParser::UpTime() {
         // TODO: Read and return the memory used by a process
         string LinuxParser::Ram(int pid) {
           ifstream myfile(kProcDirectory + to_string(pid) + "/status");
- 
+       std::string str = "12";
           if (myfile) {
             string line, os, kernel;
             while (getline(myfile, line)) {

@@ -18,7 +18,7 @@ string Format::ElapsedTime(long int seconds) {
     seconds -= 60;
     minutes +=1;
     output = to_string(hours) + ":" + to_string(minutes) + ":" + to_string(seconds);
-  if (minutes >=60){
+  while(minutes >=60){
      minutes -=60;
      hours+=1;
      output = to_string(hours) + ":" + to_string(minutes) + ":" + to_string(seconds);

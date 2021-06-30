@@ -14,7 +14,7 @@ string Format::ElapsedTime(long int seconds) {
   
   std::string output = to_string(hours) + ":" + to_string(minutes) + ":" + to_string(seconds);
   
-  if (seconds >= 60){
+  while (seconds >= 60){
     seconds -= 60;
     minutes +=1;
     output = to_string(hours) + ":" + to_string(minutes) + ":" + to_string(seconds);

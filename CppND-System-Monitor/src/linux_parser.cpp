@@ -8,14 +8,17 @@
 
 #include <vector>
 
-using namespace std;
-
 #include "linux_parser.h"
 
 using std::stof;
 using std::string;
 using std::to_string;
 using std::vector;
+using std::replace;
+using std::istringstream;
+using std::ifstream;
+
+int LinuxParser::ClkTPS() { return sysconf(_SC_CLK_TCK); }
 
 // DONE: An example of how to read data from the filesystem
 string LinuxParser::OperatingSystem() {
@@ -73,6 +76,7 @@ vector < int > LinuxParser::Pids() {
   return pids;
 }
 
+
 // TODO: Read and return the system memory utilization
 float LinuxParser::MemoryUtilization() {
   float MemTotal;
@@ -115,7 +119,7 @@ long LinuxParser::UpTime() {
         }
       }
       return Uptime;
-    }
+}
 
     // TODO: Read and return the number of jiffies for the system
     long LinuxParser::Jiffies() {
@@ -310,7 +314,7 @@ long LinuxParser::UpTime(int pid) {
     replace(line.begin(), line.end(), '=', ' ');
     replace(line.begin(), line.end(), '"', ' ');
     istringstream linestream(line);
-  
+    
     for (int i=1; i<4; i++) { 
         linestream >> word;
         data.push_back(0);
